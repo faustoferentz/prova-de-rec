@@ -10,7 +10,7 @@ class Personagem {
         this.#mana = mana;
     }
 
-   
+    
     get vida() {
         return this.#vida;
     }
@@ -23,7 +23,7 @@ class Personagem {
         return this.#mana;
     }
 
- 
+    
     set vida(novaVida) {
         this.#vida = novaVida;
     }
@@ -44,7 +44,7 @@ class Personagem {
 
 class Guerreiro extends Personagem {
     constructor(vida, forca) {
-        super(vida, forca, 0); // Sem mana
+        super(vida, forca, 0); 
     }
 
     atacar() {
@@ -53,5 +53,29 @@ class Guerreiro extends Personagem {
 
     defender() {
         console.log("Guerreiro se defende!");
+    }
+}
+
+// Classe Mago
+class Mago extends Personagem {
+    constructor(vida, mana) {
+        super(vida, 5, mana); 
+    }
+
+    atacar() {
+        console.log("Mago lança um feitiço com força mágica!");
+    }
+
+    usarMagia() {
+        if (this.mana > 0) {
+            console.log("Mago usa magia!");
+            this.mana -= 10;
+        } else {
+            console.log("Mana insuficiente!");
+        }
+    }
+
+    defender() {
+        console.log("Mago se defende!");
     }
 }
