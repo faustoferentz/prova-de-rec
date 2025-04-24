@@ -59,7 +59,7 @@ class Guerreiro extends Personagem {
 
 class Mago extends Personagem {
     constructor(vida, mana) {
-        super(vida, 5, mana); // Força baixa
+        super(vida, 5, mana); 
     }
 
     atacar() {
@@ -69,7 +69,7 @@ class Mago extends Personagem {
     usarMagia() {
         if (this.mana > 0) {
             console.log("Mago usa magia!");
-            this.mana -= 10; // Custa 10 de mana
+            this.mana -= 10; 
         } else {
             console.log("Mana insuficiente!");
         }
@@ -94,3 +94,18 @@ class Arqueiro extends Personagem {
         console.log("Arqueiro se defende!");
     }
 }
+
+
+var guerreiro = new Guerreiro(150, 30);
+var mago = new Mago(100, 80);
+var arqueiro = new Arqueiro(120, 25, 40);
+
+
+guerreiro.atacar();
+guerreiro.defender();
+
+mago.atacar();
+mago.usarMagia();
+mago.defender();
+
+arqueiro.atacar();
