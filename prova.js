@@ -10,7 +10,7 @@ class Personagem {
         this.#mana = mana;
     }
 
-   
+    
     get vida() {
         return this.#vida;
     }
@@ -36,7 +36,14 @@ class Personagem {
         this.#mana = novaMana;
     }
 
-    atacar() {
+    
+    reduzirVida(percentual) {
+        const reducao = this.#vida * (percentual / 100);
+        this.#vida -= reducao;
+        console.log(`Vida reduzida em ${reducao}. Vida atual: ${this.#vida}`);
+    }
+
+    atacar(oponente) {
         console.log("Personagem ataca!");
     }
 }
@@ -47,8 +54,9 @@ class Guerreiro extends Personagem {
         super(vida, forca, 0); 
     }
 
-    atacar() {
+    atacar(oponente) {
         console.log("Guerreiro ataca com força:", this.forca);
+        oponente.reduzirVida(10); 
     }
 
     defender() {
@@ -62,8 +70,9 @@ class Mago extends Personagem {
         super(vida, 5, mana); 
     }
 
-    atacar() {
+    atacar(oponente) {
         console.log("Mago lança um feitiço com força mágica!");
+        oponente.reduzirVida(10); 
     }
 
     usarMagia() {
@@ -86,8 +95,9 @@ class Arqueiro extends Personagem {
         super(vida, forca, mana);
     }
 
-    atacar() {
+    atacar(oponente) {
         console.log("Arqueiro atira uma flecha com força:", this.forca);
+        oponente.reduzirVida(10); 
     }
 
     defender() {
@@ -101,11 +111,11 @@ var mago = new Mago(100, 80);
 var arqueiro = new Arqueiro(120, 25, 40);
 
 
-guerreiro.atacar();
-guerreiro.defender();
+guerreiro.atacar(mago);
+console.log("Vida do Mago:", mago.vida);
 
-mago.atacar();
-mago.usarMagia();
-mago.defender();
+mago.atacar(arqueiro);
+console.log("Vida do Arqueiro:", arqueiro.vida);
 
-arqueiro.atacar();
+arqueiro.atacar(guerreiro);
+console.log("Vida do Guerreiro:", guerreiro.vida);
