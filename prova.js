@@ -10,7 +10,7 @@ class Personagem {
         this.#mana = mana;
     }
 
-    
+   
     get vida() {
         return this.#vida;
     }
@@ -111,11 +111,22 @@ var mago = new Mago(100, 80);
 var arqueiro = new Arqueiro(120, 25, 40);
 
 
-guerreiro.atacar(mago);
-console.log("Vida do Mago:", mago.vida);
+var personagens = [guerreiro, mago, arqueiro];
 
-mago.atacar(arqueiro);
-console.log("Vida do Arqueiro:", arqueiro.vida);
 
-arqueiro.atacar(guerreiro);
-console.log("Vida do Guerreiro:", guerreiro.vida);
+function atacarTodos(oponente) {
+    console.log("Iniciando ataques:");
+    for (let personagem of personagens) {
+        personagem.atacar(oponente);
+    }
+}
+
+
+atacarTodos(mago);
+console.log("Vida do Mago após ataques:", mago.vida);
+
+atacarTodos(arqueiro);
+console.log("Vida do Arqueiro após ataques:", arqueiro.vida);
+
+atacarTodos(guerreiro);
+console.log("Vida do Guerreiro após ataques:", guerreiro.vida);
