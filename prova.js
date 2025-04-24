@@ -1,38 +1,57 @@
 
-
 class Personagem {
+    #vida;
+    #forca;
+    #mana;
+
     constructor(vida, forca, mana) {
-        this.vida = vida;
-        this.forca = forca;
-        this.mana = mana;
+        this.#vida = vida;
+        this.#forca = forca;
+        this.#mana = mana;
+    }
+
+   
+    get vida() {
+        return this.#vida;
+    }
+
+    get forca() {
+        return this.#forca;
+    }
+
+    get mana() {
+        return this.#mana;
+    }
+
+ 
+    set vida(novaVida) {
+        this.#vida = novaVida;
+    }
+
+    set forca(novaForca) {
+        this.#forca = novaForca;
+    }
+
+    set mana(novaMana) {
+        this.#mana = novaMana;
+    }
+
+    atacar() {
+        console.log("Personagem ataca!");
     }
 }
 
 
 class Guerreiro extends Personagem {
     constructor(vida, forca) {
-        super(vida, forca, 0); 
+        super(vida, forca, 0); // Sem mana
+    }
+
+    atacar() {
+        console.log("Guerreiro ataca com força:", this.forca);
+    }
+
+    defender() {
+        console.log("Guerreiro se defende!");
     }
 }
-
-class Mago extends Personagem {
-    constructor(vida, mana) {
-        super(vida, 5, mana); 
-    }
-}
-
-class Arqueiro extends Personagem {
-    constructor(vida, forca, mana) {
-        super(vida, forca, mana);
-    }
-}
-
-
-var guerreiro = new Guerreiro(150, 30);
-var mago = new Mago(100, 80);
-var arqueiro = new Arqueiro(120, 25, 40);
-
-
-console.log("Guerreiro - Vida:", guerreiro.vida, "Força:", guerreiro.forca, "Mana:", guerreiro.mana);
-console.log("Mago - Vida:", mago.vida, "Força:", mago.forca, "Mana:", mago.mana);
-console.log("Arqueiro - Vida:", arqueiro.vida, "Força:", arqueiro.forca, "Mana:", arqueiro.mana);
